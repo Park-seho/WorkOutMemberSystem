@@ -2,14 +2,14 @@ package members;
 
 import java.util.Scanner;
 
-public abstract class Member {
+import exception.EmailFormatException;
+
+public abstract class Member implements MemberInput{
 	protected MemberKind kind = MemberKind.Diamond;
 	protected String name;
 	protected int id;
 	protected String email;
 	protected String phone;
-	//	protected String residentregistrationnumber;
-	//	protected String homeadress;
 
 	public Member() {
 
@@ -64,12 +64,15 @@ public abstract class Member {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+ 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException{
+		if(!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
 		this.email = email;
 	}
 
@@ -81,22 +84,57 @@ public abstract class Member {
 		this.phone = phone;
 	}
 
-	//	public String getResidentregistrationnumber() {
-	//		return residentregistrationnumber;
-	//	}
-	//	
-	//	public void setResidentregistrationnumber(String residentregistrationnumber) {
-	//		this.residentregistrationnumber = residentregistrationnumber;
-	//	}
-	//	
-	//	public String getHomeadress() {
-	//		return homeadress;
-	//	}
-	//	
-	//	public void setHomeadress(String homeadress) {
-	//		this.homeadress = homeadress;
-	//	}
-
-
 	public abstract void printInfo();
+
+
+	public void setMemberID(Scanner input) {
+		System.out.println("Member ID: ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+
+	public void setMemberName(Scanner input) {
+		System.out.println("Member name: ");
+		String name = input.next();
+		this.setName(name);
+	}
+
+	public void setMemberEmail(Scanner input) {
+		String email = "";
+		while(!email.contains("@")) {
+			System.out.println("Email address: ");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {
+				System.out.println("Incorrect Email Format. put the e=mail address that contains @");
+			}
+		}
+	}
+
+	public void setMemberPhone(Scanner input) {
+		System.out.println("Phone number: ");
+		String phone = input.next();
+		this.setPhone(phone);
+	}
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Diamond:
+			skind = "Diamond";
+			break;
+		case Gold:
+			skind = "Gold";
+			break;
+		case Silver:
+			skind = "Silver";
+			break;
+		case Bronze:
+			skind = "Bronze";
+			break;
+		default:
+		}
+		return skind;
+	}
+
 }
