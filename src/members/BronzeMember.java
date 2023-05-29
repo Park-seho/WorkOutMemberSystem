@@ -59,6 +59,6 @@ public class BronzeMember extends AboutMember{
 		String skind = getKindString();
 		System.out.println("Kind: " + skind + "Name: " + name + "  ID: " + id + " Email: " + email + " PhoneNum: " + phone + " Resident registration num: " + residentregistrationnumber + " Home adress: " + homeadress);
 	}
-	
+
 
 }

@@ -19,13 +19,13 @@ public interface MemberInput {
 	public void getUserInput(Scanner input);
 
 	public void printInfo();
-	
+
 	public void setMemberID(Scanner input);
-	
+
 	public void setMemberName(Scanner input);
-	
+
 	public void setMemberEmail(Scanner input);
-	
+
 	public void setMemberPhone(Scanner input);
 
 }

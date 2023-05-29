@@ -1,10 +1,16 @@
 package members;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class Member implements MemberInput{
+public abstract class Member implements MemberInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3914350200135220808L;
+
 	protected MemberKind kind = MemberKind.Diamond;
 	protected String name;
 	protected int id;
@@ -64,7 +70,7 @@ public abstract class Member implements MemberInput{
 	public void setId(int id) {
 		this.id = id;
 	}
- 
+
 	public String getEmail() {
 		return email;
 	}

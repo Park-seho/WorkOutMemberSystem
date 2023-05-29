@@ -5,7 +5,7 @@ import java.util.Scanner;
 import exception.EmailFormatException;
 
 public abstract class AboutMember extends Member {
-	
+
 	public AboutMember(MemberKind kind) {
 		super(kind);
 	}
@@ -18,7 +18,7 @@ public abstract class AboutMember extends Member {
 		String skind = getKindString();
 		System.out.println("Kind: " + skind + "Name: " + name + "  ID: " + id + " Email: " + email + " PhoneNum: " + phone);
 	}
-	
+
 	public void setMemberEmailwithYN(Scanner input) {
 		char answer = 'x';
 		while(answer != 'y' && answer != 'Y' && answer !='n' && answer != 'N') {

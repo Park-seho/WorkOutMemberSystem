@@ -15,5 +15,5 @@ public class GoldMember extends AboutMember{
 		setMemberPhone(input);
 	}
 
-	
+
 } 

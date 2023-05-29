@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,10 +10,16 @@ import members.Member;
 import members.MemberInput;
 import members.MemberKind;
 
-public class MemberManager {
+public class MemberManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5233741987784677279L;
+
+
 	ArrayList<MemberInput> members = new ArrayList<MemberInput>();
 
-	Scanner input;
+	transient Scanner input;
 
 	MemberManager(Scanner input){
 		this.input = input;
@@ -67,7 +74,7 @@ public class MemberManager {
 		int index = findIndex(memberId);
 		removefromMembers(index, memberId);
 	}
-	
+
 	public int findIndex(int memberId) {
 		int index = -1;
 		for(int i = 0; i < members.size(); i++){
@@ -78,7 +85,7 @@ public class MemberManager {
 		}
 		return index;
 	}
-	
+
 	public int removefromMembers(int index, int memberId) {
 		if(index >= 0) {
 			members.remove(index);
@@ -128,8 +135,8 @@ public class MemberManager {
 			members.get(i).printInfo();
 		}
 	}
-	
-	
+
+
 	public void showEditMenu() {
 		System.out.println("**Member Info Edit Menu**");
 		System.out.println("1. Edit ID ");
